@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setting Up a Virtual Machine</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      background-color: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f2937, #111827);
+      color: white;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #111827;
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .step {
+      border-left: 5px solid #2563eb;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .step-number {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .image-placeholder {
+      margin-top: 1rem;
+      background-color: #e5e7eb;
+      border: 2px dashed #9ca3af;
+      border-radius: 12px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    code {
+      background-color: #e5e7eb;
+      padding: 0.15rem 0.4rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Setting Up a Virtual Machine</h1>
+    <p>
+      A walkthrough for creating a Windows Server 2022 virtual machine in VMware Workstation Pro 17 and configuring Active Directory for homelab practice.
+    </p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Project Overview</h2>
+      <p>
+        This homelab project focuses on setting up a Virtual Machine (VM) using VMware Workstation Pro 17 in order to gain hands-on experience with Windows Server 2022 and Active Directory.
+      </p>
+
+      <h3>Host PC Specifications</h3>
+      <ul>
+        <li>Windows 11</li>
+        <li>Ryzen 7 5800X</li>
+        <li>16GB RAM</li>
+        <li>2TB SSD</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Creating the Virtual Machine</h2>
+
+      <div class="step">
+        <div class="step-number">Step 1</div>
+        <p>
+          Open VMware Workstation Pro 17 and click <strong>Create a New Virtual Machine</strong>. Choose the <strong>Typical</strong> installation type.
+        </p>
+        <div class="image-placeholder">
+          Add screenshot from PDF here
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 2</div>
+        <p>
+          Select <strong>I will install the operating system later</strong>.
+        </p>
+        <p>
+          Under Guest Operating System, choose:
+        </p>
+        <ul>
+          <li><strong>Microsoft Windows</strong></li>
+          <li><strong>Windows Server 2022</strong></li>
+        </ul>
+        <div class="image-placeholder">
+          Add operating system selection screenshot here
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 3</div>
+        <p>
+          Name the VM and choose the installation location.
+        </p>
+        <p>
+          For this project, the VM disk size was set to <strong>20GB</strong> and configured to <strong>Split virtual disk into multiple files</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 4</div>
+        <p>
+          Review the VM settings and finish the setup wizard.
+        </p>
+        <p>
+          Then open the VM settings and navigate to <code>CD/DVD (SATA)</code>. Select <strong>Use ISO image file</strong> and choose your Windows Server 2022 ISO.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Installing Windows Server 2022</h2>
+
+      <div class="step">
+        <div class="step-number">Step 5</div>
+        <p>
+          Power on the virtual machine and boot from the ISO.
+        </p>
+        <p>
+          Configure the language, keyboard, and regional settings before clicking <strong>Next</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 6</div>
+        <p>
+          Click <strong>Install now</strong>.
+        </p>
+        <p>
+          Select <strong>Windows Server 2022 Standard Evaluation Desktop Experience</strong> to install the GUI version.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 7</div>
+        <p>
+          Accept the license agreement and choose the <strong>Custom</strong> installation option.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 8</div>
+        <p>
+          Select the 20GB partition created earlier and begin the installation.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 9</div>
+        <p>
+          Once installation is complete, create an Administrator password and log into the server.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Installing Active Directory</h2>
+
+      <div class="step">
+        <div class="step-number">Step 10</div>
+        <p>
+          Open <strong>Server Manager</strong>, click <strong>Manage</strong>, and select <strong>Add Roles and Features</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 11</div>
+        <p>
+          Choose <strong>Role-based or feature-based installation</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 12</div>
+        <p>
+          Select the local server from the server pool.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 13</div>
+        <p>
+          Install the following roles:
+        </p>
+        <ul>
+          <li>Active Directory Domain Services</li>
+          <li>DNS Server</li>
+          <li>Remote Access</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 14</div>
+        <p>
+          Under Features, select <strong>Remote Server Administration Tools</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 15</div>
+        <p>
+          Review the configuration and click <strong>Install</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Promoting the Server to a Domain Controller</h2>
+
+      <div class="step">
+        <div class="step-number">Step 16</div>
+        <p>
+          After installation, click <strong>Promote this server to a domain controller</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 17</div>
+        <p>
+          Choose <strong>Add a new forest</strong> and enter your root domain name.
+        </p>
+        <p>
+          Example domain used in this project:
+        </p>
+        <ul>
+          <li><code>BigSky.local</code></li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 18</div>
+        <p>
+          Set both the Forest Functional Level and Domain Functional Level to <strong>Windows Server 2016</strong>.
+        </p>
+        <p>
+          Configure a secure Directory Services Restore Mode (DSRM) password.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 19</div>
+        <p>
+          Complete the prerequisites check and click <strong>Install</strong>.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">Step 20</div>
+        <p>
+          After rebooting, the login screen will display the domain name. Log in using the Administrator account.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built for GitHub Pages • Windows Server 2022 Homelab Project</p>
+  </footer>
+</body>
+</html>
